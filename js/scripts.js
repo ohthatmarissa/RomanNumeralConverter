@@ -10,6 +10,11 @@ $(document).ready(function() {
 
 
     var romanSet = [
+      [1000, 'M'],
+      [900, 'CM'],
+      [500, 'D'],
+      [400, 'CD'],
+      [100, 'C'],
       [90, 'XC'],
       [50, 'L'],
       [40, 'XL'],
@@ -21,14 +26,15 @@ $(document).ready(function() {
     ];
 
       function convertRoman(number) {
-       if (number === 0) {
-         return '';
-       }
-
-      for (var i = 0; i < romanSet.length; i++) {
+          for (var i = 0; i < romanSet.length; i++) {
         if (number >= romanSet[i][0]) {
           return romanSet[i][1] + convertRoman(number - romanSet[i][0]);
         }
       }
+      if (isNaN(number) || number < 1) {
+        return 'please enter a number';
+      } else {
+        return '';
     }
+  }
   });
